@@ -9,21 +9,9 @@ from mpl_toolkits.mplot3d import Axes3D
 import pylab
 pylab.rcParams['figure.figsize'] = (15, 8)
 import scipy.optimize as opt
-import logging
-Date = time.strftime("%Y_%m_%d_%H_%M_%S", time.localtime())
-logger = logging.getLogger()
-logger.setLevel(logging.DEBUG)
-BASIC_FORMAT = '%(asctime)s-%(filename)s#%(lineno)d:%(message)s'
-DATE_FORMAT = '%Y-%m-%d %H:%M:%S'
-formatter = logging.Formatter(BASIC_FORMAT, DATE_FORMAT)
-chlr = logging.StreamHandler()
-chlr.setFormatter(formatter)
-chlr.setLevel(logging.INFO)
-fhlr = logging.FileHandler(f'log_{Date}.txt')
-fhlr.setFormatter(formatter)
-fhlr.setLevel(logging.INFO)
-logger.addHandler(chlr)
-logger.addHandler(fhlr)
+
+from logger import init_logger
+logger = init_logger()
 
 POOLS = 3
 Placeholder = (1 << 6)
